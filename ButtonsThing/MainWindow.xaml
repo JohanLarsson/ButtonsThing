@@ -8,7 +8,11 @@
         Title="MainWindow" Height="350" Width="525"
         d:DataContext="{d:DesignInstance buttonsThing:Vm}">
     <Grid>
-        <ItemsControl ItemsSource="{Binding ButtonInfos}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ItemsControl ItemsSource="{Binding ButtonInfos}" Grid.Row="0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
@@ -20,5 +24,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <Button Grid.Row="1" Command="{Binding AddItem}" Content="Add"></Button>
     </Grid>
 </Window>

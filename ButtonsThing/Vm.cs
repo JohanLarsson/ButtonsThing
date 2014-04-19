@@ -20,10 +20,17 @@ namespace ButtonsThing
                 new ButtonInfo(new RelayCommand(o => MessageBox.Show("2")), "B2"),
                 new ButtonInfo(new RelayCommand(o => MessageBox.Show("3")), "B3")
             };
+            AddItem= new RelayCommand(o=>Add());
         }
         public ObservableCollection<ButtonInfo> ButtonInfos
         {
             get { return _buttonInfos; }
+        }
+        public RelayCommand AddItem { get; private set; }
+        private void Add()
+        {
+            int c = ButtonInfos.Count;
+            ButtonInfos.Add(new ButtonInfo(new RelayCommand(o => MessageBox.Show(c.ToString())), "B" + c));
         }
     }
 }
